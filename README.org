@@ -1,0 +1,13 @@
+* My NixOS config
+
+for updating nixos config:
+
+#+begin_src shell
+sudo nixos-rebuild switch --flake ./
+#+end_src
+
+for updating home manager:
+
+#+begin_src shell
+home-manager switch --flake ./
+#+end_src
