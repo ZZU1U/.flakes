@@ -3,6 +3,7 @@
     ./fish.nix
     ./packages.nix
     ./gnome.nix
+    ./hypr.nix
   ];
 
   home = {

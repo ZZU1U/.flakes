@@ -13,6 +13,7 @@
         "blur-my-shell@aunetx"
         "dash-to-dock@micxgx.gmail.com"
         "user-theme@gnome-shell-extensions.gcampax.github.com"
+	"caffeine@patapon.info"
       ];
     };
   };
@@ -23,6 +24,7 @@
     gnomeExtensions.appindicator
     gnome.gnome-tweaks
     gnomeExtensions.blur-my-shell
+    gnomeExtensions.caffeine
   ];
 }
 

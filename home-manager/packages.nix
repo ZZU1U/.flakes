@@ -20,6 +20,16 @@
     conda
     htop
     gh
+    poetry
+    lmms
+    gimp
+    inkscape
+    kdenlive
+    obs-studio
+    anki-bin
+    calibre
+    libreoffice
+    fuzzel
   ];
 
   programs.firefox.enable = true;
@@ -52,6 +62,21 @@
     enable = true;
     userName  = "g";
     userEmail = "zzu1u@list.ru";
+  };
+
+  programs.foot = {
+    enable = true;
+    settings = {
+      main = {
+        term = "foot";
+
+        font = "FiraMono Nerd Font:size=17";
+      };
+
+      mouse = {
+        hide-when-typing = "yes";
+      };
+    };
   };
 }
 

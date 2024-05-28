@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports =
@@ -6,6 +6,7 @@
       ./hardware-configuration.nix
       ./virtualisation.nix
       ./fonts.nix
+      ./envs.nix
     ];
 
   # Bootloader.
@@ -34,6 +35,8 @@
   services.xserver.desktopManager.gnome.enable = true;
   programs.dconf.enable = true;
 
+  programs.hyprland.enable = true;
+
   environment.gnome.excludePackages = (with pkgs; [
     gnome-photos
     gnome-tour
@@ -61,11 +64,11 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
-
+  services.gnome.gnome-keyring.enable = true;
+ 
   # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -86,14 +89,17 @@
   users.users.g = {
     isNormalUser = true;
     description = "Gleb";
-    extraGroups = [ "networkmanager" "wheel" "input" ];
+    extraGroups = [ "networkmanager" "wheel" "input" "video" ];
   };
+
+  programs.light.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
      home-manager
+     pulseaudio
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -122,6 +128,16 @@
 
   # Flakes support
   nix.settings.experimental-features = ["nix-command" "flakes"];
+
+  # Cachix
+  nix.settings = {
+    substituters = ["https://hyprland.cachix.org"];
+    trusted-public-keys = [
+      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+
+    ];
+    trusted-users = [ "root" "g" ];
+  };
 
   system.stateVersion = "23.11";
 }
