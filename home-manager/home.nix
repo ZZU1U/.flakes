@@ -4,6 +4,9 @@
     ./packages.nix
     ./gnome.nix
     ./hypr.nix
+    ./waybar.nix
+    ./nvim.nix
+    #./gtk.nix
   ];
 
   home = {

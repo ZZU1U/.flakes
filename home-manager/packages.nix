@@ -2,8 +2,8 @@
   nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
+    python3
     neofetch
-    neovim
     bat
     eza
     emacs
@@ -30,6 +30,11 @@
     calibre
     libreoffice
     fuzzel
+    nsxiv
+    xournalpp
+    todo-txt-cli
+    qbittorrent
+    superTuxKart
   ];
 
   programs.firefox.enable = true;
@@ -71,6 +76,10 @@
         term = "foot";
 
         font = "FiraMono Nerd Font:size=17";
+      };
+
+      colors = {
+        alpha = 0.85;
       };
 
       mouse = {

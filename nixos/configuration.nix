@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, inputs, ... }:
 
 {
   imports =
@@ -7,7 +7,15 @@
       ./virtualisation.nix
       ./fonts.nix
       ./envs.nix
+      inputs.sops-nix.nixosModules.sops
     ];
+
+  # SOPS secrets
+  sops.defaultSopsFile = ../secrets/secrets.yaml;
+  sops.defaultSopsFormat = "yaml";
+  sops.age.keyFile = "/home/g/.config/sops/age/keys.txt";
+
+  environment.localBinInPath = true;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
