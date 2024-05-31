@@ -1,13 +1,24 @@
 * My NixOS config
 
-for updating nixos config:
+to update global config:
 
 #+begin_src shell
 sudo nixos-rebuild switch --flake ./
 #+end_src
 
-for updating home manager:
+to update user config:
 
 #+begin_src shell
 home-manager switch --flake ./
 #+end_src
+
+to clean:
+#+begin_src shell
+nix-collect-garbage -d
+sudo nix-collect-garbage -d
+#+end_src
+
+#+begin_comment
+in my config garbage collection and old generations cleaning
+are automatic
+#+end_comment

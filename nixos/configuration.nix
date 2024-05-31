@@ -134,6 +134,9 @@
     options = "--delete-older-than 7d";
   };
 
+  # Optimise dependecies
+  nix.optimise.automatic = true;
+
   # Flakes support
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
